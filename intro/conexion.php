@@ -3,9 +3,9 @@
 class conexion{
 	function conectar(){
 		
-		$host="localhost";
+		$host="ec2-52-27-236-219.us-west-2.compute.amazonaws.com";
 		$user="root";
-		$pwd="nVC3XJt2nmyF5Lxx";
+		$pwd="awsmysql";
 		$bdd="proyecto";
 
 		return mysql_connect($host,$user,$pwd,$bdd);
