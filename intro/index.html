@@ -2,14 +2,14 @@
 <html lang="eng">
 <head>
 
-	<meta charset="UTF-8">
-	<title>
-		Crowd
-	</title>
-	<meta name="viewport" content="width=width-device,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
-	<link rel="stylesheet"  href="css/index.css">
-	<link rel="stylesheet"  href="css/bootstrap.css">
-	<link href="assets/css/font-awesome.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>
+    Crowd
+  </title>
+  <meta name="viewport" content="width=width-device,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+  <link rel="stylesheet"  href="css/index.css">
+  <link rel="stylesheet"  href="css/bootstrap.css">
+  <link href="assets/css/font-awesome.css" rel="stylesheet">
     <link href="lib/bootstrap-social.css" rel="stylesheet" >
 </head>
 <body>
@@ -19,28 +19,28 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       
         <div class="navbar-header">
-	    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </a>
-		
-        <a class="navbar-brand" style="font-size:2em;color: white;" href="#">OutSourcing</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    
+        <a class="navbar-brand" href="http://localhost:8080/intro/index.html">CrowdSourcing</a>
         </div>
-		   
-		
+       
+    
         <div class="navbar-collapse collapse">
         
-      	<form action="logearse.php" method="POST" class="navbar-form navbar-right" role="search" >
-      		<div class="form-group">
-      			<input type="text" class="form-control" placeholder="Usuario" name="usuario1" required>
-      			<input type="password" class="form-control" placeholder="Contraseña" name="contra1" required>
-				    <input type="submit" value="Iniciar sesion" class="btn btn-success btn-sm">
-				  <br>
-				<a href="#"><font color= "white">¿Has olvidado tu contraseña?</font></a>
-
-      		</div>
-      	</form>
+        <form action="logearse.php" method="POST" class="navbar-form navbar-right" role="search" >
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Usuario" name="usuario1" required>
+            <input type="password" class="form-control" placeholder="Contraseña" name="contra1" required>
+        <input type="submit" value="Iniciar sesion" class="btn btn-success btn-sm">
+        <br>
+        <a href="http://localhost:8080/intro/recuperar.html"><font color= "gray">Recuperar contraseña</font></a>
+       
+          </div>
+        </form>
         </div>
 
 
@@ -51,7 +51,7 @@
 
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide">
+<<div id="myCarousel" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -59,13 +59,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="imagenes/index.jpg" style="width:100%" style="heigth:25%"   class="img-responsive">
-      <div class="container">	
+      <img src="imagenes/imagenesapp/index.jpg" style="width:100%" style="heigth:25%"   class="img-responsive">
+      <div class="container"> 
         <div class="carousel-caption">
           <h1 style = "color: black">CrowdSourcing</h1>
           <p></p>
-          <p><a class="btn btn-lg btn-success" data-toggle="modal" data-target="#myModal">Registrarse now</a>
-		</p>
+          <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Registrarse now</a>
+    </p>
         </div>
       </div>
     </div>
@@ -81,71 +81,39 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Registrar Personas, Ingrese sus datos: </h4>
+        <h4 class="modal-title">Ingrese sus datos</h4>
       </div>
       <div class="modal-body">
-		<form action="login.php" method="POST" >
-			<div class="form-group has-feedback has-feedback-left">
-        <div class="input-group">
-            <span class="input-group-addon">Usuario</span>
-      			<input type="text" class="form-control" required name="usuario" placeholder="Usuario">
-            <i class="form-control-feedback glyphicon glyphicon-user"></i>
-          </div>
-				<br>
-
-        <div class="input-group">
-          <span class="input-group-addon">Tipo de Usuario</span>
-          <select id="tipo" name="tipo" class="form-control" required>
-            <option value="Persona">Persona</option>
-            <option value="Empresa">Empresa</option>
-          </select>
-                
-         </div>
-         <br>
-          <div class="input-group">
-            <span class="input-group-addon">Contraseña</span>
+    <form action="login.php" method="POST" >
+      <div class="form-group">
+            <input type="text" class="form-control" required name="usuario" placeholder="Usuario">
+        <br>
             <input type="password" class="form-control" required name="contra" placeholder="Contraseña">
-            <i class="form-control-feedback glyphicon glyphicon-lock"></i>
-          </div>		
-				<br>
-        <div class="input-group">
-            <span class="input-group-addon">Confirmar contraseña</span>
-            <input type="password" class="form-control" required name="contra2" placeholder="Confirmar contraseña">
-            <i class="form-control-feedback glyphicon glyphicon-ok"></i>
-          </div>
-				<br>
-        <div class="input-group">
-            <span class="input-group-addon">Nombre</span>
-            <input type="text" class="form-control" required name="nombre" placeholder="Nombre">
-            <i class="form-control-feedback glyphicon glyphicon-pencil"></i>
-          </div>
-				<br>
-          <div class="input-group">
-            <span class="input-group-addon">Apellido</span>
+        <br>
+        <input type="password" class="form-control" required name="contra2" placeholder="Confirmar contraseña">
+        <br>
+        <input type="text" class="form-control" required name="nombre" placeholder="Nombre">
+        <br>
             <input type="text" class="form-control" required name="apellido" placeholder="Apellido">
-            <i class="form-control-feedback glyphicon glyphicon-font"></i>
+        <br>
+        <input type="email" class="form-control" required name="correo" placeholder="Correo">
+        <br>
+        <input type="submit" value="Registrarme" class="btn btn-lg btn-primary">
+        <br>
+         <input type="checkbox" id="$cheque">
+         <a href="http://www.pymesv.com/sitesmash/intro/terminosycondiciones.html">He leido y acepto los terminos y condiciones</a>
+         
+        
           </div>
-      			
-				<br>
-        <div class="input-group">
-            <span class="input-group-addon">Correo</span>
-            <input type="email" class="form-control" required name="correo" placeholder="Correo">
-            <i class="form-control-feedback glyphicon glyphicon-envelope"></i>
-          </div>
-          <br>
-          <input type="submit" value="Registrarme" class="btn btn-lg btn-primary">
-				<br>
-      		</div>
-		</form>
+    </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cerrar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
 </div>
-
 
 
 
@@ -193,15 +161,14 @@
 <br>
 
 
+
+
+
+
+
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
-<div class="container-full">
-  
-  <div class="col-md-12 text-center page-header" >  
-  </div>
-   
-   </div>
 
 <div class="container marketing">
 
@@ -230,7 +197,7 @@
   </div>
 
 
-	</div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="foot" >
@@ -239,6 +206,8 @@
   </footer>
 
 
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 
 </body>

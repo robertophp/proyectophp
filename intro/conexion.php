@@ -3,10 +3,10 @@
 class conexion{
 	function conectar(){
 		
-		$host="ec2-52-27-236-219.us-west-2.compute.amazonaws.com";
+		$host="localhost";
 		$user="root";
-		$pwd="awsmysql";
-		$bdd="proyecto";
+		$pwd="nVC3XJt2nmyF5Lxx";
+		$bdd="user";
 
 		return mysql_connect($host,$user,$pwd,$bdd);
 	}
