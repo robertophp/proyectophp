@@ -10,7 +10,7 @@ if(isset($_POST['usuario1']) && isset($_POST['contra1']))
 			mysql_select_db('proyecto', $con);
 			
 			
-			$datosdeusuario="SELECT * FROM  USUARIO_PERSONAL WHERE ID_USUARIO =  '$usuario' AND contra ='$contra'";
+			$datosdeusuario="SELECT * FROM  usuario_personal WHERE ID_USUARIO =  '$usuario' AND contra ='$contra'";
 			$resultado=mysql_query($datosdeusuario,$con);
 	
 		if(mysql_num_rows($resultado)>0)
@@ -25,8 +25,9 @@ if(isset($_POST['usuario1']) && isset($_POST['contra1']))
 				echo "<script>location.href='http://localhost:8080/intro/index.html'</script>";
 
 		}
+		mysql_close($con);
 }
 
-		mysql_close($con);
+		
 
 ?>
