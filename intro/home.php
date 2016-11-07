@@ -66,7 +66,7 @@ else{?>
 
 </style>
   <div class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" >
       
         <div class="navbar-header">
 			<a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -77,26 +77,55 @@ else{?>
 			<a class="navbar-brand" style="color:white;"  href="http://localhost:8080/intro/home.php">OutSourcing</a>
           
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse ">
         
       	    <div class="form-group">
              
 					<div class="col-sm-5 col-md-8">
-						<form class="navbar-form" role="search" action="perfil_ver2.php" method="post">
+						<form class="navbar-form" role="search"  action="perfil_ver2.php" method="post">
 							<div class="input-group">
 							
 								<input type="text" id="texto" class="form-control" placeholder="Buscar" name="q">
-								
+								<script type="text/javascript">
+									
+								 $(function(){   
+									$("#texto").autocomplete({
+									  source: "voto.php"
+									 
+									});
+									});
+								   
+								</script>	
+
 								<div class="input-group-btn">
 									<button class="btn btn-default " type="submit"><i class="glyphicon glyphicon-search "></i>.</button>
 								</div>
 							</div>
 						</form>
 					</div>
-							  
-					<ul class="nav navbar-nav navbar-right">
-						  <li><a style="color:white;" href="http://localhost:8080/intro/home.php">Inicio</a></li>
-						  
+
+				
+    <!-- Brand and toggle get grouped for better mobile display -->
+    			     <div class="form-inline float-xs-right" style="height: 2px;">
+    			     <form action="" method="post" >
+					 <select class="form-group" name="categorias"  style="height: 30px; margin-top: 10px;">
+       				 <option value="Todos">Todos</option>
+					  <option value="2">Logos</option>
+					  <option value="1">Diseño web</option>
+					  <option value="3">Marketing</option>
+					  <option value="4">Medio Ambiente</option>
+					  <option value="5">Politica</option>
+    			 </select>
+    			  
+      	             <button class="btn btn-default btn-md " style="margin-top: 8px; height: 30px; width: 40px;" type="submit"><i class="glyphicon glyphicon-search "></i></button>
+      					</div>
+      					</form>
+      					</div>
+
+					<ul class="nav navbar-nav  navbar-right" style="height: 0px; ">
+				   <li class="nav-item">
+				   <a style="color:white;" href="http://localhost:8080/intro/home.php">Inicio</a></li>
+			
 							<li class="dropdown">
 								 <a  style="color:white;" href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
 								<img src="<?php echo $carpetafoto.$_SESSION['fotoperfil'];  ?>" width="30" height="30" class="img-circle special-img"> <?php echo $user; ?> <b class="caret"></b></a>
@@ -119,20 +148,35 @@ else{?>
 </div><!-- /navbar wrapper -->
 <hr>
 
+
+
+
+
 				 
-  <div id="wrapper">
+ <div id="wrapper">
   <div id="columns">
   <?php
-	
-	$traerpost="SELECT * FROM PUBLICACIONES INNER JOIN usuario_personal on usuario_personal.ID_USUARIO=PUBLICACIONES.ID_USUARIO";		
-	
+	if(isset($_POST["categorias"]))
+	{
+		$seleccion = $_POST["categorias"];
+		if($seleccion=='Todos')
+		{
+			$traerpost="SELECT * FROM PUBLICACIONES INNER JOIN usuario_personal on usuario_personal.ID_USUARIO=PUBLICACIONES.ID_USUARIO";		
+		}
+		else{
+		$traerpost = "SELECT * FROM PUBLICACIONES INNER JOIN usuario_personal on usuario_personal.ID_USUARIO=PUBLICACIONES.ID_USUARIO where Categoria='$seleccion'";
+	}
+	}else
+		{
+	$traerpost="SELECT * FROM PUBLICACIONES INNER JOIN usuario_personal on usuario_personal.ID_USUARIO=PUBLICACIONES.ID_USUARIO";				
+		}
 	
 	$poststraidos=mysql_query($traerpost,$con);
 	$carpetadestino="imagenes/imagenesapp/";
 	$contador=0;
     $num=1;
 	while (($fila = mysql_fetch_array($poststraidos))!=NULL){?>
-	<form action="#" method="POST">
+	<form action="mostrarengrande.php" method="POST">
 		<div class="pin">
 	<img src="<?php echo $carpetadestino.$fila["IMG"];?>" />
 		 <div class="well"> 
@@ -140,8 +184,8 @@ else{?>
       </div>
 	  <div class ="row">
 	   <input  type="submit"   value="Ver +" class="btn btn-default btn col-md-3 col-xs-3 text-left">
-
-	  <a name="a" class="col-md-6 col-xs-3 text-center" href="#">Por: <?php echo $fila["ID_USUARIO"].'('.$fila["tipo_usuario"].')'?>   </a>
+	 <!--   .'('.$fila["tipo_usuario"].')' -->
+	  <a name="a" class="col-md-6 col-xs-3 text-center" href="#">Por: <?php echo $fila["ID_USUARIO"].'('.$fila["tipo_usuario"].')'; ?>   </a>
 	  <input type="text" name="valor1" value="<?php echo $fila["ID_POST"];?>" hidden>
 	  
 
@@ -202,28 +246,20 @@ else{?>
                    <label>Idioma:</label>
                    <input type="text" class="form-control" name="idioma">
                 </div>
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-6 col-md-2">
                    <label>Oferta:</label>
                    <input type="text" class="form-control" placeholder="$" name="precio">
                 </div>
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-6 col-md-2">
                    <label>Vence:</label>
                   <div class="form-group">
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' class="form-control" name="fecha" placeholder="mm/dd/aa" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                <div class='input-group ' style="width: 50px;">
+                    <input type='date' class="form-control" name="fecha"   />
+                  
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker2').datetimepicker({
-                    locale: 'ru'
-                });
-            });
-        </script>
+        
               </div>
       			<textarea class="form-control" rows="3" name="descripcion" placeholder="Breve descripcion de proyecto"></textarea>
 				 </br>
